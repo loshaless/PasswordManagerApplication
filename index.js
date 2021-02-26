@@ -68,8 +68,25 @@ function edit(event) {
     if (item.classList[0] === "edit-btn") {
         let variabel = item.parentElement.children[6].innerText.length
         var id = item.parentElement.children[6].innerText[variabel - 1]
+        
         var name = prompt("Please enter your name", "nama");
+        if(name === ""){
+            alert("nama tidak boleh kosong")
+            return;
+        }
+        else if (name === null) {
+            return;
+        }
+
         var password = prompt("Please enter your password", "password");
+        if(password === ""){
+            alert("password tidak boleh kosong")
+            return;
+        }
+        else if (password === null) {
+            return;
+        }
+
         for (let i = 0; i < todos.length; i++) {
             if (todos[i]["id"] === Number(id)) {
                 todos[i]["dueDate"] = name
