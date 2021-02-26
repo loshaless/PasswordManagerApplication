@@ -1,0 +1,202 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffc34d;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+}
+
+header {
+  font-size: 1.2rem;
+  margin-bottom: -3rem;
+}
+
+header,
+form {
+  /* min-height: 20vh; */
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  margin: 10px;
+}
+
+.input-form {
+  display: flex;
+  justify-content: space-around;
+  width: 98%;
+}
+.input-box {
+  width: 80%;
+  background-color: white;
+  /* padding: 15px; */
+  border-radius: 30px;
+  margin-top: 10px;
+  box-shadow : 5px 5px;
+}
+.form-input-text {
+  width: 53%;
+  margin-right: 20px;
+}
+.form-input-date {
+  width: 25%;
+  margin-right: 10px;
+}
+form input,
+form button {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border: none;
+  background: whitesmoke;
+  border-radius: 0.4rem;
+}
+
+form button {
+  color: white;
+  background: #dc3246;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0.4rem;
+  margin-left: 0.4rem;
+}
+
+button:focus {
+  border: none;
+}
+
+.todo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px;
+}
+
+.todo-box {
+  width: 80%;
+  background-color: white;
+  margin-top: 20px;
+  /* padding: 15px; */
+  border-radius: 35px;
+  box-shadow: 7px 7px;
+}
+
+.todo-list {
+  min-width: 40%;
+  list-style: none;
+  /* padding-bottom: 2rem; */
+  transition: all 0.5s ease;
+}
+
+.todo {
+  margin: 0.5rem;
+  background: white;
+  color: black;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem;
+  border-radius: 0.4rem;
+  transition: all 0.5s ease;
+}
+.todo-item {
+  padding: 0rem 0.5rem;
+  display: none;
+}
+.todo li {
+  flex: 1;
+
+}
+
+.todo-url {
+  padding: 0rem 0.5rem;
+  display: block;
+}
+
+.edit-todo {
+  background: #49cf7a;
+  color: white;
+}
+.delete-todo {
+  background: red;
+  color: white;
+}
+
+.delete-btn,
+.edit-btn {
+  background: #dc3246;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  margin-left: 0.4rem;
+}
+
+.edit-btn {
+  background: #49cf7a;
+}
+
+.todo-id{
+  display: none;
+}
+.hidepassword-btn {
+  background: gray;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  margin-left: 0.4rem;
+  display: none;
+}
+
+.showpassword-btn {
+  background: blue;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  margin-left: 0.4rem;
+}
+
+.delete-btn {
+  background:red;
+}
+
+.remove {
+  transform: translateY(8rem) rotateZ(20deg);
+  opacity: 0;
+}
+
+#card-content {
+  text-align: center;
+}
+.card {
+  /* border: solid 2px; */
+  display: inline-block;
+  padding: 20px;
+  margin: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 5px 5px;
+}
+
+.card img {
+  width: 150px;
+  height: 50px;
+}
+
+.edit-button {
+  padding: 10px;
+  border-radius: 10px;
+  background: #49cf7a;
+  font-size: 16px;
+  margin: 20px;
+}
