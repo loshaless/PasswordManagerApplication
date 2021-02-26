@@ -1,6 +1,8 @@
 // TODO LIST 
 let todos = [
-    
+    { task: "www.facebook.com", dueDate: "budi", password: "$%^DFVSA", id: 1 },
+    { task: "www.google.com", dueDate: "andi", password: "!@SF#@$#", id: 2 },
+    { task: "www.twitter.com", dueDate: "nila", password: "!@GJY^&*", id: 3 }
 ]
 
 function filterTodos(todoList) {
@@ -66,29 +68,46 @@ function addTodo(event) {
 function edit(event) {
     const item = event.target;
     if (item.classList[0] === "edit-btn") {
-        let variabel = item.parentElement.children[6].innerText.length
-        var id = item.parentElement.children[6].innerText[variabel - 1]
-        
+        let variabel = item.parentElement.parentElement.children[2].innerText
         var name = prompt("Please enter your name", "nama");
-        if(name === ""){
+        if (name === "") {
             alert("nama tidak boleh kosong")
             return;
         }
         else if (name === null) {
-            return;
+            for (let i = 0; i < todos.length; i++) {
+                if (todos[i]["id"] === Number(variabel)) {
+                    name = todos[i]["dueDate"]
+                }
+            }
         }
-
+        else {
+            for (let i = 0; i < todos.length; i++) {
+                if (todos[i]["id"] === Number(variabel)) {
+                    todos[i]["dueDate"] = name
+                }
+            }
+            render()
+        }
         var password = prompt("Please enter your password", "password");
-        if(password === ""){
+        if (password === "") {
             alert("password tidak boleh kosong")
             return;
         }
         else if (password === null) {
             return;
         }
+        else {
+            for (let i = 0; i < todos.length; i++) {
+                if (todos[i]["id"] === Number(variabel)) {
+                    todos[i]["password"] = password
+                }
+            }
+            render()
+        }
 
         for (let i = 0; i < todos.length; i++) {
-            if (todos[i]["id"] === Number(id)) {
+            if (todos[i]["id"] === Number(variabel)) {
                 todos[i]["dueDate"] = name
                 todos[i]["password"] = password
             }
@@ -97,19 +116,20 @@ function edit(event) {
     }
     else if (item.classList[0] === "delete-btn") {
         deleteButton(event)
-    } else if (item.classList[0] === "showpassword-btn"){
+    }
+    else if (item.classList[0] === "showpassword-btn") {
+        console.log(item.parentElement.parentElement)
+        item.parentElement.children[1].style.display = "none"
+        item.parentElement.children[2].style.display = "block"
+        item.parentElement.parentElement.children[0].style.display = "none"
+        item.parentElement.parentElement.children[1].style.display = "block"
+    }
+    else if (item.classList[0] === "hidepassword-btn") {
         console.log(item.parentElement)
         item.parentElement.children[1].style.display = "block"
-        item.parentElement.children[0].style.display = "none"
-        item.parentElement.children[5].style.display = "block"
-        item.parentElement.children[3].style.display = "none"
-        
-    }else if (item.classList[0] === "hidepassword-btn"){
-        console.log(item.parentElement)
-        item.parentElement.children[1].style.display = "none"
-        item.parentElement.children[0].style.display = "block"
-        item.parentElement.children[5].style.display = "none"
-        item.parentElement.children[3].style.display = "block"
+        item.parentElement.children[2].style.display = "none"
+        item.parentElement.parentElement.children[0].style.display = "block"
+        item.parentElement.parentElement.children[1].style.display = "none"
     }
 }
 
@@ -121,10 +141,10 @@ function deleteButton(event) {
     if (item.classList[0] === "delete-btn") {
         if (confirm('Are you sure you want to delete this thing from database?')) {
             console.log('Thing was saved to the database.');
-            let variabel = item.parentElement.children[6].innerText.length
-            var id = item.parentElement.children[6].innerText[variabel - 1]
+            let variabel = item.parentElement.parentElement.children[2].innerText
+            // var id = item.parentElement.children[6].innerText[variabel - 1]
             for (let i = 0; i < todos.length; i++) {
-                if (todos[i]["id"] !== Number(id)) {
+                if (todos[i]["id"] !== Number(variabel)) {
                     array.push(todos[i])
                 }
             }
@@ -155,37 +175,9 @@ function render() {
 
         // create li
         const newTodo = document.createElement("li");
-        newTodo.innerText = `${todoListObj[i].dueDate} -- ${todoListObj[i].password}`;
+        newTodo.innerText = `username:  ${todoListObj[i].dueDate} \n password :  ${todoListObj[i].password}`;
         newTodo.classList.add("todo-item");
         todo.appendChild(newTodo);
-
-        //create delete button
-        const deleteButton = document.createElement("button");
-        deleteButton.innerHTML = "Delete";
-        deleteButton.classList.add("delete-btn");
-        deleteButton.setAttribute("type", "submit");
-        todo.appendChild(deleteButton);
-
-        //create showPassword button
-        const showPassword = document.createElement("button");
-        showPassword.innerHTML = "Show Password";
-        showPassword.classList.add("showpassword-btn");
-        showPassword.setAttribute("type", "submit");
-        todo.appendChild(showPassword);
-
-        // create completed button
-        const doneButton = document.createElement("button");
-        doneButton.innerHTML = "Edit";
-        doneButton.classList.add("edit-btn");
-        doneButton.setAttribute("type", "submit")
-        todo.appendChild(doneButton);
-
-        // create hide password
-        const hidePassword = document.createElement("button");
-        hidePassword.innerHTML = "Hide Password";
-        hidePassword.classList.add("hidepassword-btn");
-        hidePassword.setAttribute("type", "submit")
-        todo.appendChild(hidePassword);
 
         //create id
         const todoid = document.createElement("li");
@@ -193,8 +185,42 @@ function render() {
         todoid.classList.add("todo-id");
         todo.appendChild(todoid);
 
+        const grouping = document.createElement("div");
+        grouping.classList.add("grouping");
+        //create delete button
+        const deleteButton = document.createElement("button");
+        deleteButton.innerHTML = "Delete";
+        deleteButton.classList.add("delete-btn");
+        deleteButton.setAttribute("type", "submit");
+        grouping.appendChild(deleteButton);
+
+        //create showPassword button
+        const showPassword = document.createElement("button");
+        showPassword.innerHTML = "Show Password";
+        showPassword.classList.add("showpassword-btn");
+        showPassword.setAttribute("type", "submit");
+        grouping.appendChild(showPassword);
+
+        // create hide password
+        const hidePassword = document.createElement("button");
+        hidePassword.innerHTML = "Hide Password";
+        hidePassword.classList.add("hidepassword-btn");
+        hidePassword.setAttribute("type", "submit")
+        grouping.appendChild(hidePassword);
+
+        // create completed button
+        const doneButton = document.createElement("button");
+        doneButton.innerHTML = "Edit";
+        doneButton.classList.add("edit-btn");
+        doneButton.setAttribute("type", "submit")
+        grouping.appendChild(doneButton);
+
+
+
+
         // append to todoList
         todoList.appendChild(todo);
+        todo.appendChild(grouping)
 
     }
 }

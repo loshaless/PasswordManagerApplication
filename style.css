@@ -76,33 +76,31 @@ button:focus {
   padding: 50px;
 }
 
-.todo-box {
-  width: 80%;
-  background-color: white;
-  margin-top: 20px;
-  /* padding: 15px; */
-  border-radius: 35px;
-  box-shadow: 7px 7px;
-}
+
 
 .todo-list {
   min-width: 40%;
   list-style: none;
   /* padding-bottom: 2rem; */
   transition: all 0.5s ease;
+  text-align: center;
+}
+
+.grouping {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
 }
 
 .todo {
-  margin: 0.5rem;
-  background: white;
-  color: black;
-  font-size: 1.2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.6rem;
-  border-radius: 0.4rem;
-  transition: all 0.5s ease;
+  display: inline-block;
+  padding: 20px;
+  margin: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 5px 5px;
+  height: 120px;
+  width: 250px;
 }
 .todo-item {
   padding: 0rem 0.5rem;
@@ -136,6 +134,7 @@ button:focus {
   cursor: pointer;
   border-radius: 0.4rem;
   margin-left: 0.4rem;
+  height: 40px;
 }
 
 .edit-btn {
@@ -154,6 +153,8 @@ button:focus {
   border-radius: 0.4rem;
   margin-left: 0.4rem;
   display: none;
+  height: 40px;
+  font-size: 9px;
 }
 
 .showpassword-btn {
@@ -164,6 +165,8 @@ button:focus {
   cursor: pointer;
   border-radius: 0.4rem;
   margin-left: 0.4rem;
+  height: 40px;
+  font-size: 9px;
 }
 
 .delete-btn {
