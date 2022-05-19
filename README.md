@@ -1,4 +1,4 @@
 # passwordManager Application
-https://loshaless.github.io/
+https://loshaless.github.io/PasswordManagerApplication/
 
 Tech Used : HTML, CSS, Javascript
